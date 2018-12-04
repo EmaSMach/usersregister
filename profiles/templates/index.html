@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Users</h1>
+</div>
+<div class="container">
+    <ol>
+        {% for user in users_lst %}
+        <li>{{ user }}</li>
+            <ul>
+                <li>Id: {{ user.id }}</li>
+                <li>First Name: {{ user.first_name }}</li>
+                <li>Last name: {{ user.last_name }}</li>
+                <li>Age: {{ user.age }}</li>
+                <li>Gender: {{ user.gender }}</li>
+                <li>Email: {{ user.email }}</li>
+                <li>Address: {{ user.address }}</li>
+                <li>City: {{ user.city }}</li>
+                <li>State: {{ user.state }}</li>
+                <li>Country: {{ user.country }}</li>
+                <li>Zip Code: {{ user.zip_code }}</li>
+                <li>Active: {{ user.active }}</li>
+                <li>Time Zone: {{ user.timezone }}</li>
+            </ul>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock %}
