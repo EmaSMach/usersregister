@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Users - Addresses{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div>
+        <h1>Users</h1>
+    </div>
+
+<table class="table">
+    <thead>
+        <th>User</th>
+        <th>Address</th>
+    </thead>
+
+{% for user in users %}
+
+    <tbody>
+    <td>{{ user }}</td>
+    <td>{{ user.address }}</td>
+    </tbody>
+
+{% endfor %}
+</table>
+
+</div>
+{% endblock %}
