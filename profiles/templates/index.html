@@ -4,28 +4,72 @@
 
 {% block content %}
 <div class="container">
-    <h1>Users</h1>
-</div>
-<div class="container">
-    <ol>
+    <h1 class="title">Users</h1>
+    <table class="table-info table-sm">
+        <thead>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Zip Code</th>
+            <th>Active</th>
+            <th>Time Zone</th>
+        </thead>
+        <tbody>
         {% for user in users_lst %}
-        <li>{{ user }}</li>
-            <ul>
-                <li>Id: {{ user.id }}</li>
-                <li>First Name: {{ user.first_name }}</li>
-                <li>Last name: {{ user.last_name }}</li>
-                <li>Age: {{ user.age }}</li>
-                <li>Gender: {{ user.gender }}</li>
-                <li>Email: {{ user.email }}</li>
-                <li>Address: {{ user.address }}</li>
-                <li>City: {{ user.city }}</li>
-                <li>State: {{ user.state }}</li>
-                <li>Country: {{ user.country }}</li>
-                <li>Zip Code: {{ user.zip_code }}</li>
-                <li>Active: {{ user.active }}</li>
-                <li>Time Zone: {{ user.timezone }}</li>
-            </ul>
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>
+                {% if user.age %}
+                {{ user.age }}
+                {% endif %}
+            </td>
+            <td>
+                {% if user.gender %}
+                {{ user.gender }}
+                {% endif %}
+            </td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.address }}</td>
+            <td>
+                {% if user.city %}
+                {{ user.city }}
+                {% endif %}
+            </td>
+            <td>
+                {% if user.state %}
+                {{ user.state }}
+                {% endif %}
+            </td>
+            <td>
+                {% if user.country %}
+                {{ user.country }}
+                {% endif %}
+            </td>
+            <td>
+                {% if user.zip_code %}
+                {{ user.zip_code }}
+                {% endif %}
+            </td>
+            <td>{{ user.active }}</td>
+            <td>
+                {% if user.timezone %}
+                {{ user.timezone }}
+                {% endif %}
+            </td>
+
+        </tr>
         {% endfor %}
-    </ol>
+        </tbody>
+    </table>
 </div>
 {% endblock %}
+

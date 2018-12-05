@@ -7,5 +7,8 @@ from .models import Users
 
 
 def users(request):
+    """
+    List all the users in database.
+    """
     users_lst = Users.objects.all()
     return render(request, 'index.html', {'users_lst': users_lst})
