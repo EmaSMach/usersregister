@@ -28,6 +28,9 @@ class UsersView(TemplateView):
 
 
 class UsersListView(ListView):
+    """
+    A class to list all the users.
+    """
     model = Users
     template_name = 'users_lst.html'
 
@@ -37,9 +40,9 @@ class UserDetailView(DetailView):
     Show the user details.
     """
     model = Users
-
-    def get_context_data(self, request, pk):
-        user = get_object_or_404(Users, pk)
-        context = {'user': user}
-        if user:
-            return render(request, 'details.html', context)
+    template_name = 'details.html'
+    # def get_context_data(self, request, pk):
+    #     user = get_object_or_404(Users, pk)
+    #     context = {'user': user}
+    #     if user:
+    #         return render(request, 'details.html', context)

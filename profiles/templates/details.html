@@ -1,13 +1,74 @@
 {% extends 'base.html' %}
 
-{% block title %}Users - Addresses{% endblock %}
+{% block title %}Details - {{ object }}{% endblock %}
 
 {% block content %}
 <div class="container">
+    <h1>Details for user: {{ object }}</h1>
 
+    <table class="table-info table-sm">
+        <thead>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Zip Code</th>
+            <th>Active</th>
+            <th>Time Zone</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ object.id }}</td>
+            <td>{{ object.first_name }}</td>
+            <td>{{ object.last_name }}</td>
+            <td>
+                {% if object.age %}
+                {{ object.age }}
+                {% endif %}
+            </td>
+            <td>
+                {% if object.gender %}
+                {{ object.gender }}
+                {% endif %}
+            </td>
+            <td>{{ object.email }}</td>
+            <td>{{ object.address }}</td>
+            <td>
+                {% if object.city %}
+                {{ object.city }}
+                {% endif %}
+            </td>
+            <td>
+                {% if object.state %}
+                {{ object.state }}
+                {% endif %}
+            </td>
+            <td>
+                {% if object.country %}
+                {{ object.country }}
+                {% endif %}
+            </td>
+            <td>
+                {% if object.zip_code %}
+                {{ object.zip_code }}
+                {% endif %}
+            </td>
+            <td>{{ object.active }}</td>
+            <td>
+                {% if object.timezone %}
+                {{ object.timezone }}
+                {% endif %}
+            </td>
 
-
-
+        </tr>
+        </tbody>
+    </table>
 
 </div>
 {% endblock content %}
