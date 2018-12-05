@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 
 # Create your views here.
 from .models import Users
@@ -25,6 +25,11 @@ class UsersView(TemplateView):
         users = Users.objects.all()
         context = {'users': users}
         return context
+
+
+class UsersListView(ListView):
+    model = Users
+    template_name = 'users_lst.html'
 
 
 class UserDetailView(DetailView):

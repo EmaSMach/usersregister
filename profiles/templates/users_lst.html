@@ -16,7 +16,8 @@
         <th>Address</th>
     </thead>
 
-{% for user in users %}
+    {% if object_list %}
+{% for user in object_list %}
 
     <tbody>
     <td>{{ user }}</td>
@@ -24,6 +25,7 @@
     </tbody>
 
 {% endfor %}
+    {% endif %}
 </table>
 
 </div>
