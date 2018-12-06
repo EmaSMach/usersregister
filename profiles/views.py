@@ -60,23 +60,23 @@ class UsersCreateView(CreateView):
         context = super(UsersCreateView, self).get_context_data(**kwargs)
         for i in context:
             print i
-        if 'form' not in context:
-            context['form'] = self.form_class(self.request.GET)
-        if 'form2' not in context:
-            context['form2'] = self.second_form_class(self.request.GET)
+        if 'users_form' not in context:
+            context['users_form'] = self.form_class(self.request.GET)
+        if 'address_form' not in context:
+            context['address_form'] = self.second_form_class(self.request.GET)
         for i in context:
             print i
         return context
 
     def post(self, request, **kwargs):
         self.object = self.get_object
-        form = self.form_class(request.POST)
-        form2 = self.second_form_class(request.POST)
-        if form.is_valid() and form2.is_valid():
-            create_user = form.save(commit=False)
-            create_user.address = form2.save()
+        users_form = self.form_class(request.POST)
+        address_form = self.second_form_class(request.POST)
+        if users_form.is_valid() and address_form.is_valid():
+            create_user = users_form.save(commit=False)
+            create_user.address = address_form.save()
             create_user.save()
             return HttpResponseRedirect(self.get_success_url())
         else:
 
-            return self.get_context_data()
+            self.get_context_data()
