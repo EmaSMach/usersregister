@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect, resolve_url, render_to_response
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.views.generic import TemplateView, DetailView, ListView, CreateView
 from django.urls.base import reverse_lazy
 
@@ -79,4 +79,4 @@ class UsersCreateView(CreateView):
             return HttpResponseRedirect(self.get_success_url())
         else:
 
-            self.get_context_data()
+            self.get_context_data(users_form=users_form, address_form=address_form)
