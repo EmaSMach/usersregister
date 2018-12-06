@@ -9,10 +9,10 @@ class Address(models.Model):
     """
     A class representing an address.
     """
-    address = models.TextField(max_length=100, null=True, blank=True)
+    address = models.TextField(max_length=100, null=False, blank=False)
 
-    def __str__(self):
-        return self.address.encode('utf-8')
+    def __unicode__(self):
+        return self.address
 
     class Meta:
         verbose_name_plural = 'Addresses'
@@ -59,6 +59,9 @@ class Users(Gender):
     phone_number = models.CharField(max_length=50, null=True, blank=True)
     active = models.BooleanField(null=False, blank=False)
     timezone = models.CharField(max_length=50, null=True, blank=True, validators=[validate_timezone])
+
+    def clean(self):
+        pass
 
     def __unicode__(self):
         return "{0} {1}".format(self.first_name, self.last_name)

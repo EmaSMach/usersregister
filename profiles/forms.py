@@ -1,8 +1,18 @@
-from django.forms import forms
-from .models import Users
+from .models import Users, Address
+from django import forms
 
 
-class UsersForm(forms.Form):
+class AddressForm(forms.ModelForm):
+    """
+    A simple form for Address class.
+    """
+    class Meta:
+        model = Address
+        fields = ['address']
+        labels = {'address': 'Address'}
+
+
+class UsersForm(forms.ModelForm):
     """
     A form for the Users model.
     """
@@ -15,7 +25,6 @@ class UsersForm(forms.Form):
             "age",
             "gender",
             "email",
-            "address",
             "city",
             "state",
             "country",
@@ -31,7 +40,6 @@ class UsersForm(forms.Form):
            "age": "Age",
            "gender": "Gender",
            "email": "Email",
-           "address": "Address",
            "city": "City",
            "state": "State",
            "country": "Country",
