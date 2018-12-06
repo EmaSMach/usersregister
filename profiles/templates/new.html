@@ -10,8 +10,10 @@
         {% csrf_token %}
         {{ users_form.as_p }}
         {{ address_form.as_p }}
-    <button type="submit" class="btn-primary">Submit</button>
-        <button class="btn-danger">Cancel</button>
+        <input type="submit" class="btn-primary" value="Submit">
+        <input type="button" class="btn-danger" value="Cancel">
+        <input type="reset" class="btn-warning" value="Clear">
+
     </form>
 </div>
 

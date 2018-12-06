@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import TemplateView, DetailView, ListView, CreateView
 from django.urls.base import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 from .models import Users, Address
 from .forms import UsersForm, AddressForm
 
 
+@login_required
 def users(request):
     """
     List all the users in database.
@@ -17,6 +20,7 @@ def users(request):
     return render(request, 'index.html', {'users_lst': users_lst})
 
 
+@method_decorator(login_required, name='dispatch')
 class UsersView(TemplateView):
     """
     Shows al the users and their addresses.
@@ -29,6 +33,7 @@ class UsersView(TemplateView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class UsersListView(ListView):
     """
     A class to list all the users.
@@ -37,6 +42,7 @@ class UsersListView(ListView):
     template_name = 'users_lst.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class UserDetailView(DetailView):
     """
     Show the user details.
@@ -45,6 +51,7 @@ class UserDetailView(DetailView):
     template_name = 'details.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class UsersCreateView(CreateView):
     """
     A view to create a new user.
