@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Users{% endblock %}
+{% block title %}Users - Detailed List{% endblock %}
 
 {% block content %}
 <div class="container">
     <h1 class="title">Users</h1>
-    <table class="table-info table-sm">
+    <table class="table table-sm">
         <thead>
             <th>ID</th>
             <th>First Name</th>
@@ -71,5 +71,11 @@
         </tbody>
     </table>
 </div>
+<style>
+    h1 {
+    text-align: center;
+    color: darkblue;
+    }
+</style>
 {% endblock %}
 

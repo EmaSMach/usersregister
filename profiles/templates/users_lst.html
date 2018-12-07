@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Users - Addresses{% endblock %}
+{% block title %}Users - Simple List{% endblock %}
 
 {% block content %}
 
@@ -20,8 +20,11 @@
 {% for user in object_list %}
 
     <tbody>
-    <td>{{ user }}</td>
-    <td>{{ user.address }}</td>
+        <tr>
+            <td>{{ user }}</td>
+            <td>{{ user.address }}</td>
+            <td><a href="{% url 'profiles:user_detail' user.id%}">See Details</a></td>
+        </tr>
     </tbody>
 
 {% endfor %}
@@ -29,4 +32,12 @@
 </table>
 
 </div>
+<style>
+    h1 {
+    text-align: center;
+    color: darkblue;
+    }
+    a:hover {
+    text-decoration: none;}
+</style>
 {% endblock %}

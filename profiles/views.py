@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 # Create your views here.
-from .models import Users, Address
+from .models import Users
 from .forms import UsersForm, AddressForm
 
 
@@ -58,7 +58,7 @@ class UsersCreateView(CreateView):
     """
     model = Users
     template_name = 'new.html'
-    success_url = reverse_lazy("profiles:simple_lst")
+    success_url = reverse_lazy("profiles:new")
 
     form_class = UsersForm
     second_form_class = AddressForm

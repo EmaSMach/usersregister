@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block content %}
 
 <div class="container">
-    <h1>Login</h1>
-    <form action="" method="post">
+    <h1>Register</h1>
+    <form action="" method="post" class="form">
         {% csrf_token %}
         <!--<label for="username">User</label>-->
         <!--<input type="text" name="username">-->
@@ -14,11 +14,18 @@
         <!--<label for="password">User</label>-->
         <!--<input type="password" name="password">-->
 
-        {{ form }}
+        {{ form.as_p }}
 
-        <input type="submit" value="Login">
+        <input type="submit" value="Register">
     </form>
-    <a href="/register/">Register</a>
 </div>
+<style>
+    .container {
+    width: 30%;
+    }
+    input {
+    width: 100%;
+    }
+</style>
 
 {% endblock %}

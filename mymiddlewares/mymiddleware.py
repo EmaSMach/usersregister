@@ -23,12 +23,12 @@ class MyMiddleware(object):
     def __call__(self, request):
         # Code to be executed for each request before
         # the view (and later middleware) are called.
-        usera = 'auth.User'
-        #print "TESTEO", request.user, dir(request.user)
-        #print "TESTEO", request.user.get_email_field()
+
         response = self.get_response(request)
         if request.user.is_authenticated():
             print "Email", request.user.email
+            print "Email from POST", request.POST.get('email')
+            print "Email from GET", request.GET.get('email')
             try:
                 print is_gmail_email(request.user.email)
             except ValidationError:
