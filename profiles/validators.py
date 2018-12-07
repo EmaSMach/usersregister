@@ -6,7 +6,7 @@ import re
 def validate_first_name(value):
     """Validates the first name."""
     if len(value) <= 3:
-        raise ValidationError("First Name should be longer than 10 characters")
+        raise ValidationError("First Name should be longer than 3 characters")
     elif len(value) > 3 and value.isdigit():
         raise ValidationError("First Name should not contain numbers only")
 
@@ -14,7 +14,7 @@ def validate_first_name(value):
 def validate_last_name(value):
     """Validate the last name"""
     if len(value) <= 3:
-        raise ValidationError("Last Name should be longer than 10 characters")
+        raise ValidationError("Last Name should be longer than 3 characters")
     elif len(value) > 3 and value.isdigit():
         raise ValidationError("Last Name should not contain numbers only")
 

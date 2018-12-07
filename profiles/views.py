@@ -85,5 +85,5 @@ class UsersCreateView(CreateView):
             create_user.save()
             return HttpResponseRedirect(self.get_success_url())
         else:
-
-            self.get_context_data(users_form=users_form, address_form=address_form)
+            return self.render_to_response(context={'users_form': users_form,
+                                                    'address_form': address_form})
