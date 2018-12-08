@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user
 from django.shortcuts import redirect
 from django.core.validators import ValidationError
+from django.contrib.auth import logout
 import re
 
 
@@ -12,7 +13,7 @@ def is_gmail_email(email):
     """
     pattern = re.compile(r"\b[\w.%+-]+@gmail.com\b")
     if not re.match(pattern, email):
-        raise ValidationError("The email is not valid")
+        raise ValidationError("The email is not a gmail address")
 
 
 class MyMiddleware(object):
@@ -25,14 +26,13 @@ class MyMiddleware(object):
         # the view (and later middleware) are called.
 
         response = self.get_response(request)
-        if request.user.is_authenticated():
-            print "Email", request.user.email
-            print "Email from POST", request.POST.get('email')
-            print "Email from GET", request.GET.get('email')
+        if request.user.is_authenticated() and not request.user.is_superuser:
+            print "Email>>>", request.user.email
             try:
-                print is_gmail_email(request.user.email)
+                is_gmail_email(request.user.email)
             except ValidationError:
-                redirect('http://www.google.com')
+                logout(request)
+                return redirect('register')
             except TypeError:
                 print "Ponga un usuario."
 

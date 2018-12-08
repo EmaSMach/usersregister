@@ -1,23 +1,26 @@
-{% extends 'base.html' %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
 
 <div class="container">
-    <h1>Login</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        <!--<label for="username">User</label>-->
-        <!--<input type="text" name="username">-->
+    {% if user.is_authenticated %}
+        <p>your logged in as {{ user.username }}</p>
+    {% else %}
+        <h1>Login</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <!--<label for="username">User</label>-->
+            <!--<input type="text" name="username">-->
 
-        <!--<label for="password">User</label>-->
-        <!--<input type="password" name="password">-->
+            <!--<label for="password">User</label>-->
+            <!--<input type="password" name="password">-->
 
-        {{ form }}
+            {{ form }}
 
-        <input type="submit" value="Login">
-    </form>
+            <input type="submit" value="Login">
+        </form>
+    {% endif %}
     <a href="/register/">Register</a>
 </div>
 

@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 
 
 LOGIN_REDIRECT_URL = reverse_lazy("profiles:simple_lst")
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_REQUIRED_REDIRECT_URL = 'login'

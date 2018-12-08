@@ -15,16 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth.views import login
-import views
-from .views import login_view, register_view, logout_view
+from django.contrib.auth import views as auth_views
+
+import views  # import our custom sign in view to also ask for an email
 
 urlpatterns = [
+    url('accounts/', include('django.contrib.auth.urls')),
     url(r'^home/', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('profiles.urls')),
-    #url(r'^$', login, {'template_name': 'login.html'}, name='login'),
-    url(r'^$', login_view, name='login'),
-    url(r'^register/', register_view, name='register'),
-    url(r'^logout/', logout_view, name='logout'),
+    url(r'^$', auth_views.login, name='login'),
+    url(r'^register/', views.signup, name='register'),  # use our custom view
+    url(r'^logout/', auth_views.logout, name='logout'),
 ]
