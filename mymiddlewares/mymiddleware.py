@@ -33,7 +33,7 @@ class MyMiddleware(object):
                 is_gmail_email(request.user.email)
             except ValidationError:
                 logout(request)
-                return redirect('register')
+                return redirect('login')
             except TypeError:
                 print "An error occurred"
                 return redirect('login')
