@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Users - Detailed List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title mt-3">Users</h1>
+    <table class="table table-sm mt-3">
+        <thead>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Zip Code</th>
+            <th>Active</th>
+            <th>Time Zone</th>
+        </thead>
+        <tbody>
+        {% for user in users_lst %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>
+                {% if user.age %}
+                {{ user.age }}
+                {% endif %}
+            </td>
+            <td>
+                {% if user.gender %}
+                {{ user.gender }}
+                {% endif %}
+            </td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.address }}</td>
+            <td>
+                {% if user.city %}
+                {{ user.city }}
+                {% endif %}
+            </td>
+            <td>
+                {% if user.state %}
+                {{ user.state }}
+                {% endif %}
+            </td>
+            <td>
+                {% if user.country %}
+                {{ user.country }}
+                {% endif %}
+            </td>
+            <td>
+                {% if user.zip_code %}
+                {{ user.zip_code }}
+                {% endif %}
+            </td>
+            <td>{{ user.active }}</td>
+            <td>
+                {% if user.timezone %}
+                {{ user.timezone }}
+                {% endif %}
+            </td>
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<link rel="stylesheet" href="{% static 'profiles/css/users.css' %}">
+
+{% endblock %}
+

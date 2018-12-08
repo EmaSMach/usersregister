@@ -1,6 +1,6 @@
-# A simple middleware to check if the user email is an @gmail one.
-from django.contrib.auth.models import User
-from django.contrib.auth import get_user
+"""
+A simple middleware to check if the user email is an @gmail one.
+"""
 from django.shortcuts import redirect
 from django.core.validators import ValidationError
 from django.contrib.auth import logout
@@ -17,42 +17,24 @@ def is_gmail_email(email):
 
 
 class MyMiddleware(object):
+    """
+    Checks if the email of the logged user is a gmail account.
+    """
     def __init__(self, get_response):
         self.get_response = get_response
-        # One-time configuration and initialization.
 
     def __call__(self, request):
-        # Code to be executed for each request before
-        # the view (and later middleware) are called.
-
+        """
+        The code that will be executed.
+        """
         response = self.get_response(request)
         if request.user.is_authenticated() and not request.user.is_superuser:
-            print "Email>>>", request.user.email
             try:
                 is_gmail_email(request.user.email)
             except ValidationError:
                 logout(request)
                 return redirect('register')
             except TypeError:
-                print "Ponga un usuario."
-
-
-            # user = get_user(request)
-            # print dir(user), "USUARIO", type(user), user.is_authenticated(), user.email
-            # if request.method == "GET":
-            #     if request.GET.get('email'):
-            #         try:
-            #             is_gmail_email(request.GET.get('email'))
-            #         except ValidationError:
-            #             redirect('http://www.google.com')
-            #     else:
-            #         if request.user.is_authenticated():
-            #             try:
-            #                 is_gmail_email(request.user.get('email'))
-            #             except ValidationError:
-            #                 redirect('http://www.google.com')
-
-        # Code to be executed for each request/response after
-        # the view is called.
-
+                print "An error occurred"
+                return redirect('login')
         return response

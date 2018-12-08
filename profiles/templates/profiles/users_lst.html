@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Users - Simple List{% endblock %}
 
 {% block content %}
@@ -7,13 +7,14 @@
 <div class="container">
 
     <div>
-        <h1>Users</h1>
+        <h1 class="mt-3">Users</h1>
     </div>
 
-<table class="table">
+<table class="table mt-3">
     <thead>
         <th>User</th>
         <th>Address</th>
+        <th>Options</th>
     </thead>
 
     {% if object_list %}
@@ -32,12 +33,7 @@
 </table>
 
 </div>
-<style>
-    h1 {
-    text-align: center;
-    color: darkblue;
-    }
-    a:hover {
-    text-decoration: none;}
-</style>
+
+<link rel="stylesheet" href="{% static 'profiles/css/users_lst.css' %}">
+
 {% endblock %}

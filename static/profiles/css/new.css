@@ -1,0 +1,26 @@
+input[type=text], input[type=number], textarea {
+    width: 100%;
+    }
+
+    ul {
+    display: inline;
+    float: right;
+    }
+
+    h1 {
+    color: darkblue;
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    }
+
+    .cont {
+    margin: auto;
+    width: 50%;
+    margin-bottom: 40px;
+    }
+
+    body {
+    color: green;
+}
